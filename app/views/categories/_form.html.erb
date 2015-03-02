@@ -1,0 +1,125 @@
+
+  <div class = "jumbotron"> 
+    <h2>What do you want to <strong>improve?</strong></h2>
+    <p><button type="button" class="btn btn-info"><%= link_to "Log In", new_user_session_path %></button> or <button type="button" class="btn btn-info"><%= link_to "Sign Up", new_user_registration_path %></button> to get started </p> 
+  </div> 
+
+
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container">
+    <hr class="">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Blood Pressure</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Body Fat %</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Sleep</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr class="">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Energy Level</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Blood Sugar </h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="">Cholesterol</h3>
+                </div>
+                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra
+                    varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt
+                    condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis
+                    nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor
+                    accumsan. Aliquam in felis sit amet augue.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">Body Fat %</div>
+  <div class="col-md-4">Sleep</div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">Cholesterol</div>
+  <div class="col-md-4">Energy</div>
+  <div class="col-md-4">Blood Sugar</div>
+</div>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit "Proceed" %>
+  </div>
+<% end %>

@@ -1,0 +1,45 @@
+<h1>Set your <strong>hypothesis</strong></h1>
+
+<%= form_for(@experiment) do |f| %>
+  <% if @experiment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@experiment.errors.count, "error") %> prohibited this experiment from being saved:</h2>
+
+      <ul>
+      <% @experiment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>If I... <%= f.select :treatment, [['Suggested treatment options...','suggested treatment options'],['Meditate','meditate'],['Workout','workout'],['Get 8 hours of sleep']] %> every day </h3>
+    <div class="col-md-4">
+    <%= f.label :startdate, "From"%>
+      <%= date_field("order", "date", { class: "form-control" } ) %>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :startdate, "Until"%>
+      <%= date_field("order", "date", { class: "form-control" } ) %>
+    </div>
+    </br>
+  </br>
+      <!-- note: must change Blood Pressure to @category  -->
+  <h3>Then I expect my Blood Pressure to improve from </h3>
+    <br>
+    <label>Initial Value</label>
+    <br>
+    <%= number_field_tag :initialval %>
+    <br>
+    <label>Expected Value</label>
+    <br>
+    <%= number_field_tag :outcome %>
+
+<!-- # hidden field user_id send that through  -->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', experiments_path %>
