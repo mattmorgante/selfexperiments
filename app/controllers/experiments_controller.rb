@@ -15,6 +15,7 @@ class ExperimentsController < ApplicationController
   # GET /experiments/new
   def new
     @experiment = Experiment.new
+    @category = Category.find(params[:category_id])
   end
 
   # GET /experiments/1/edit

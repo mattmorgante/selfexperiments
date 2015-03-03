@@ -5,6 +5,7 @@ gem 'twilio-ruby'
 gem 'rails', '4.2.0'
 gem 'devise'
 gem 'awesome_print'
+gem 'figaro'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'bootstrap-sass'

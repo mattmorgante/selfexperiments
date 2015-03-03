@@ -13,7 +13,9 @@
     </div>
   <% end %>
 
-  <h3>If I... <%= f.select :treatment, [['Suggested treatment options...','suggested treatment options'],['Meditate','meditate'],['Workout','workout'],['Get 8 hours of sleep']] %> every day </h3>
+<!-- loop through an array using option_for_select  -->
+
+  <h3>If I... <%= f.select(:treatment, options_for_select( Treatment.all.collect{ |t| [t.name, t.id]}.insert(0, "Suggested Treatment Options..."))) %> every day </h3>
     <div class="col-md-4">
     <%= f.label :startdate, "From"%>
       <%= date_field("order", "date", { class: "form-control" } ) %>
@@ -25,7 +27,7 @@
     </br>
   </br>
       <!-- note: must change Blood Pressure to @category  -->
-  <h3>Then I expect my Blood Pressure to improve from </h3>
+  <h3>Then I expect my <%= @category.name %> to improve from </h3>
     <br>
     <label>Initial Value</label>
     <br>
@@ -35,11 +37,13 @@
     <br>
     <%= number_field_tag :outcome %>
 
-<!-- # hidden field user_id send that through  -->
+<!-- # hidden field to send through user_id  -->
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
 
 <%= link_to 'Back', experiments_path %>
