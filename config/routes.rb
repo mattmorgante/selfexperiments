@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
 
   root 'categories#index'
-
+  post 'twilio/voice' => 'twilio#voice'
+  post 'notifications/notify' => 'notifications#notify'
   resources :categories
 
   devise_for :users
