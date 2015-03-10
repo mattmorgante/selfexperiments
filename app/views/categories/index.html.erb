@@ -1,9 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<div class = "jumbotron"> 
+
+<div class = "jumbotron" id = "jumbo" > 
   <h2>What do you want to <strong>improve?</strong></h2>
   <p><button type="button" class="btn btn-info"><%= link_to "Log In", new_user_session_path %></button> or <button type="button" class="btn btn-info"><%= link_to "Sign Up", new_user_registration_path %></button> to get started </p> 
-</div> 
+
+<script src='https://connect.humanapi.co/connect.js'></script>
+
+<img id='connect-health-data-btn' src='https://connect.humanapi.co/assets/button/blue.png'/>
+
+<script>
+var connectBtn = document.getElementById('connect-health-data-btn');
+connectBtn.addEventListener('click', function(e) {
+  var opts = {
+    // grab this from the app settings page
+    clientId: 'UNIQUE_CLIENT_ID_FOR_THE_APPLICATION',
+    // can be email or any other internal id of the user in your system
+    clientUserId: 'UNIQUE_USER_ID_IN_YOUR_APPLICATION',
+    finish: function(err, sessionTokenObject) {
+      // When user finishes health data connection to your app
+      // `finish` function will be called.
+      // `sessionTokenObject` object will have several fields in it.
+      // You need to pass this `sessionTokenObject` object to your server
+      // add `CLIENT_SECRET` to it and send `POST` request to the `https://user.humanapi.co/v1/connect/tokens` endpoint.
+      // In return you will get `accessToken` for that user that can be used to query Human API.
+    },
+    close: function() {
+      // do something here when user just closed popup
+      // `close` callback function is optional
+    }
+  }
+  HumanConnect.open(opts);
+});
+</script>
+
+</div>
 
 <% @categories.each do |category| %> 
 <div class="container">
@@ -14,7 +45,7 @@
                 <h3 class=""><%= category.name %></h3>
             </div>
               <div class="panel-body"><%= category.description %></div>
-              <div class="panel-footer"><%= link_to 'Get Started', new_experiment_path(category_id: category.id) %></div>
+              <div class="panel-footer"><button type = "button" class = "btn btn-primary" ><%= link_to 'Get Started', new_experiment_path(category_id: category.id) %></div></button>
             </div>
           </div>
         </div>
