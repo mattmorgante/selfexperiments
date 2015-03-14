@@ -1,48 +1,52 @@
-<h1>Set your <strong>hypothesis</strong></h1>
 
-<%= form_for(@experiment) do |f| %>
-  <% if @experiment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@experiment.errors.count, "error") %> prohibited this experiment from being saved:</h2>
 
-      <ul>
-      <% @experiment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div id = "standardformat" > 
+
+  <h1>Set your <strong>hypothesis</strong></h1>
+
+  <%= form_for(@experiment) do |f| %>
+    <% if @experiment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@experiment.errors.count, "error") %> prohibited this experiment from being saved:</h2>
+
+        <ul>
+        <% @experiment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <h3> My <%= @category.name %> is currently: </h3> 
+      <label>Initial Value</label>
+      <br>
+      <%= f.number_field :initialval %>
+
+
+  <!-- loop through an array using option_for_select  -->
+    <h3>If I... <%= f.select(:treatment_id, options_for_select(Treatment.all.collect{ |t| [t.name, t.id]}.insert(0, "Suggested Treatment Options..."))) %> every day </h3>
+      <div>
+      <%= f.date_select(:startdate)%>
+      </div>
+    </br> 
+      <div>
+      <%= f.date_select(:enddate)%>
+      </div>
+      </br>
+    </br>
+        <!-- note: must change Blood Pressure to @category  -->
+    <h3>Then I expect my <%= @category.name %> to improve to: </h3>
+      <label>Expected Value</label>
+      <br>
+      <%= f.number_field :outcome %>
+
+  <!-- # hidden field to send through user_id  -->
+
+    <div class="actions">
+      <%= f.submit "Create" %>
     </div>
   <% end %>
-
-<!-- loop through an array using option_for_select  -->
-
-  <h3>If I... <%= f.select(:treatment, options_for_select( Treatment.all.collect{ |t| [t.name, t.id]}.insert(0, "Suggested Treatment Options..."))) %> every day </h3>
-    <div class="col-md-4">
-    <%= f.label :startdate, "From"%>
-      <%= date_field("order", "date", { class: "form-control" } ) %>
-    </div>
-    <div class="col-md-4">
-    <%= f.label :startdate, "Until"%>
-      <%= date_field("order", "date", { class: "form-control" } ) %>
-    </div>
-    </br>
-  </br>
-      <!-- note: must change Blood Pressure to @category  -->
-  <h3>Then I expect my <%= @category.name %> to improve from </h3>
-    <br>
-    <label>Initial Value</label>
-    <br>
-    <%= number_field_tag :initialval %>
-    <br>
-    <label>Expected Value</label>
-    <br>
-    <%= number_field_tag :outcome %>
-
-<!-- # hidden field to send through user_id  -->
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div> 
 
 
 
