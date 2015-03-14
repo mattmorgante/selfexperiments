@@ -1,5 +1,3 @@
-
-
 <div id = "standardformat" > 
 
   <h1>Set your <strong>hypothesis</strong></h1>
@@ -22,32 +20,35 @@
       <br>
       <%= f.number_field :initialval %>
 
-
   <!-- loop through an array using option_for_select  -->
-    <h3>If I... <%= f.select(:treatment_id, options_for_select(Treatment.all.collect{ |t| [t.name, t.id]}.insert(0, "Suggested Treatment Options..."))) %> every day </h3>
+    <h3><strong>If</strong> I... <%= f.select(:treatment_id, options_for_select(Treatment.all.collect{ |t| [t.name, t.id]}.insert(0, "Suggested Treatment Options..."))) %> every day </h3>
       <div>
+        <p><strong>From</strong></p>
       <%= f.date_select(:startdate)%>
       </div>
     </br> 
       <div>
+        <p><strong>Until</strong></p>
       <%= f.date_select(:enddate)%>
       </div>
       </br>
     </br>
         <!-- note: must change Blood Pressure to @category  -->
-    <h3>Then I expect my <%= @category.name %> to improve to: </h3>
+    <h3><strong>Then</strong> I expect my <%= @category.name %> to improve to: </h3>
       <label>Expected Value</label>
       <br>
       <%= f.number_field :outcome %>
 
-  <!-- # hidden field to send through user_id  -->
 
     <div class="actions">
+      <%= f.hidden_field :user_id, value: @user.id %>
       <%= f.submit "Create" %>
     </div>
   <% end %>
-</div> 
 
 
+  <button type="button" class="btn btn-info">
+  <%= link_to 'Back', categories_path %>
+  </button> 
 
-<%= link_to 'Back', experiments_path %>
+  </div> 

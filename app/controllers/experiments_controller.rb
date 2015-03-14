@@ -16,6 +16,7 @@ class ExperimentsController < ApplicationController
   def new
     @experiment = Experiment.new
     @category = Category.find(params[:category_id])
+    @user = User.new
   end
 
   # GET /experiments/1/edit
